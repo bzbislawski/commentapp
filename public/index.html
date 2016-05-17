@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CommentApp</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
+</head>
+<body ng-app="CommentApp">
+ 	<nav class="navbar navbar-default navbar-static-top">
+        <div class="container" ng-controller="NavController">
+            <div class="navbar-header">
+
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    CommentApp
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
+                    <li ui-sref-active="active"><a ui-sref="comment">Comments</a></li>
+                    
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ user.data.name ? user.data.name : 'Guest'  }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-if="user.data.name != null "><a href="" ng-click="logout()"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+
+                        <li ng-if="user.data.name == null "><a ui-sref="login">Login</a></li>
+                        <li ng-if="user.data.name == null "><a ui-sref="register">Register</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	<div class="container">
+	    <div class="row">
+	        <div class="col-md-8 col-md-offset-2">
+	            <div class="panel panel-default">
+	                <div class="panel-heading"></div>
+	                <div class="panel-body">
+	    				<div ui-view></div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	</div>
+</body>
+ 
+<script src="/node_modules/angular/angular.js"></script>
+<script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="/node_modules/satellizer/satellizer.js"></script>
+
+<!-- Te 2 linki warto by bylo miec na dysku -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 
+<script src="/app/app.js"></script>
+<script src="/app/controllers/AuthController.js"></script>
+<script src="/app/controllers/UserController.js"></script>
+<script src="/app/controllers/CommentController.js"></script>
+<script src="/app/controllers/NavController.js"></script>
+<script src="/app/services/authService.js"></script>
+<script src="/app/services/userService.js"></script>
+<script src="/app/services/navService.js"></script>
+
+

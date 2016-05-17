@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-lg-12"><br></div>
+</div>
+<div class="col-sm-10 col-sm-offset-1">
+    <h3>Comments</h3>
+
+    <div class="well">
+        <table class="table table-bordered table-striped table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        Text
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="comment in comments | orderBy: 'created_at'">
+                    <td>
+                        {{comment.name}}
+                    </td>
+                    <td>
+                        {{comment.text}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" ng-click="delete(comment)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="well">
+        <h4>Add Your Comment</h4>
+        <h5>Only logged in users can add comments</h5>
+
+        <form ng-submit="submit()"> <!-- ng-submit will disable the default form action and use our function -->
+    
+        <!-- COMMENT TEXT -->
+        <div class="form-group">
+            <input type="text" class="form-control input-lg" name="text" ng-model="comment.text" placeholder="Say what you have to say">
+        </div>
+    
+        <!-- SUBMIT BUTTON -->
+        <div class="form-group text-center">   
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </div>
+        </form>
+    </div>
+</div>
